@@ -1,0 +1,20 @@
+function opReqGetAsync(t, e, n) {
+    var o = "https://opreq.observepoint.com/?acct=" + e,
+        s = new XMLHttpRequest;
+    o.concat();
+    s.onreadystatechange = function() {
+        4 == s.readyState && 200 == s.status && n(s.responseText)
+    }, s.open("POST", o, !0), s.send(JSON.stringify(t))
+};
+var b;
+var scripts = document.getElementsByTagName("script") ? document.getElementsByTagName("script") :'';
+for(i=0;i<scripts.length; i++){
+	if(scripts[i] && scripts[i].src.indexOf('dtm') >-1){
+		b = scripts[i].src
+	}
+
+}
+var object = new Object();
+var jsSRC = 'dtm';
+object[jsSRC] = b
+opReqGetAsync(object, "dtm");
